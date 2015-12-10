@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="nome_app">GPA-Projetos 1.0(beta)</string>
-    <string name="versao">1.0 (beta)</string>
+    <string name="nome_app">NaSuaKZ-0.1(beta)</string>
+    <string name="versao">0.1 (beta)</string>
+    <string name="title_activity_atv_principal">NaSuaKZ</string>
+
+    <string name="navigation_drawer_open">abrir menu lateral</string>
+    <string name="navigation_drawer_close">fechar menu lateral</string>
+
+    <string name="action_settings">Configurações</string>
 
 </resources>

@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcel;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.firebase.client.Firebase;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -51,7 +54,7 @@ public class AtvLogin extends Activity{
         this.arquivo = new File(AtvLogin.this.getFilesDir() +"/"+ nomeArquivo);
     }
 
-    @Override
+   /* @Override
     protected void onResume() {
         if (this.arquivo.exists()){
             try {
@@ -67,7 +70,7 @@ public class AtvLogin extends Activity{
             }
         }
         super.onResume();
-    }
+    }*/
 
     /**
      * setado diretamente na propriedade OnClick do BTNlogin
@@ -86,13 +89,12 @@ public class AtvLogin extends Activity{
     private ProgressBar PrgLogin;
     public class LoginTask extends AsyncTask<Void, Void, Boolean> {
         private final String login;
+        private final String senha;
 
         @Override
         protected void onPreExecute() {
             Utils.barraProgresso(AtvLogin.this, PrgLogin, true);
         }
-
-        private final String senha;
 
         LoginTask(String login, String senha) {
             this.login = login;
@@ -102,16 +104,24 @@ public class AtvLogin extends Activity{
         @Override
         protected Boolean doInBackground(Void... params) {
             //TODO nao enviar senhas sem segurança
-            usuario = WebService.login(login, senha);//login via webservice
-            if (usuario != null) {
+            //usuario = WebService.login(login, senha);//login via webservice
+            /*Firebase.setAndroidContext(AtvLogin.this);
+            Firebase myFirebaseRef = new Firebase("https://nasuakz.firebaseio.com/");
+            myFirebaseRef.child("usuario").*/
+            /*if (usuario != null) {
                 AgendaServico agendaServico = new AgendaServico();
                 agendaServico.onReceive(AtvLogin.this, new Intent());
                 return true;
             } else
-                return false;
+                return false;*/
+            usuario = new Usuario(Parcel.obtain());
+            usuario.setNome("Usuário Teste");
+            usuario.setId(1);
+            usuario.setPerfil("Col");
+            return true;
         }
 
-        private void gravaArquivo(){
+        /*private void gravaArquivo(){
             try {
                 FileOutputStream arquivo = AtvLogin.this.openFileOutput(AtvLogin.this.nomeArquivo, 0);
                 arquivo.write(this.login.getBytes());
@@ -123,13 +133,13 @@ public class AtvLogin extends Activity{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
 
         @Override
         protected void onPostExecute(final Boolean successo) {
             AtaskLogin = null;
             if (successo) {
-                if (!AtvLogin.this.arquivo.exists()) {
+                /*if (!AtvLogin.this.arquivo.exists()) {
                     this.gravaArquivo();
                 }else{
                     FileInputStream arquivo = null;
@@ -144,8 +154,8 @@ public class AtvLogin extends Activity{
                         e.printStackTrace();
                     }
                 }
-                /* OUT OF MEMORY!!!
-                WebService.tarefas(usuario.getId());*/
+                *//* OUT OF MEMORY!!!
+                WebService.tarefas(usuario.getId());*//*
                 equipeAdm = new Equipe(Parcel.obtain());
                 equipeAdm.setId(1);
                 if (usuario.getEquipes().contains(equipeAdm)) {
@@ -164,10 +174,11 @@ public class AtvLogin extends Activity{
                         servicoTarefas.run();
                         return null;
                     }
-                }.execute();
-                Toast.makeText(AtvLogin.this, "Bem vindo "+String.valueOf("["+usuario.getPerfil()+"]"+usuario.getNome()), Toast.LENGTH_LONG).show();
+                }.execute();*/
+                Snackbar.make(findViewById(R.id.coordinatorLayout), "Bem vindo " + this.login, Snackbar.LENGTH_LONG).show();
+                startActivity(new Intent(AtvLogin.this, AtvPrincipal.class));
             } else {
-                Toast.makeText(AtvLogin.this, "Usuário ou senha inválidos", Toast.LENGTH_LONG).show();
+                Snackbar.make(findViewById(R.id.coordinatorLayout), "Usuário ou senha inválidos", Snackbar.LENGTH_LONG).show();
             }
             Utils.barraProgresso(AtvLogin.this, PrgLogin, false);
         }
