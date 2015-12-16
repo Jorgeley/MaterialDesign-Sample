@@ -6,8 +6,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.support.design.widget.Snackbar;
+import android.transition.Explode;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -45,6 +47,8 @@ public class AtvLogin extends Activity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // enable transitions
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.atv_login);
         Utils.contexto = this;
@@ -77,6 +81,7 @@ public class AtvLogin extends Activity{
      * @param v
      */
     public void onClickLogin(View v) {
+        getWindow().setExitTransition(new Explode());
         String login = this.TxtEmail.getText().toString();
         String senha = this.EdtSenha.getText().toString();
         this.AtaskLogin = new LoginTask(login, senha);

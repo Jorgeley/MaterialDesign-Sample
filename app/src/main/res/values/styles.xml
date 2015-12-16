@@ -1,13 +1,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="TemaGeral">
+    <style name="TemaGeral" parent="android:Theme.Material">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/cardview_light_background</item>
+        <!--<item name="textColorPrimary">@color/textColorPrimary</item>-->
         <!--<item name="android:background">#fff</item>-->
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:icon">@mipmap/logo</item>
-        <item name="android:actionBarStyle">@android:style/Widget.Holo.Light.ActionBar</item>
-        <item name="android:logo">@mipmap/logo</item>
+        <item name="android:logo">@drawable/logo_144x144</item>
         <item name="android:displayOptions">useLogo|showHome</item>
         <item name="android:homeAsUpIndicator">@drawable/menu</item>
         <item name="android:textColor">#fff</item>
@@ -17,16 +21,11 @@
         <item name="android:shadowColor">#000</item>
     </style>
 
-    <style name="TemaGeral.TemaLogin">
-        <item name="android:logo">@android:color/transparent</item>
-    </style>
+    <!--<style name="TemaGeral.TemaLogin">
+    </style>-->
 
-    <style name="TemaGeral.TemaPrincipal"></style>
+    <style name="AppBarOverlay" parent="android:Theme.Material" />
 
-    <style name="TemaGeral.TemaTarefa"></style>
-
-    <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="PopupOverlay" parent="android:Theme.Material" />
 
 </resources>
