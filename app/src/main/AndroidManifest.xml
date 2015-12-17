@@ -68,9 +68,12 @@
             android:label="@string/title_activity_atv_principal"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".activities.AtvProduto"
+            android:name=".activities.AtvProdutos"
             android:label="@string/title_activity_atv_produto"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activities.AtvProduto"
+            android:label="@string/title_activity_atv_produto"></activity>
     </application>
 
 </manifest>

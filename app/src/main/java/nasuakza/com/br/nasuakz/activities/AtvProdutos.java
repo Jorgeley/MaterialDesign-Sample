@@ -23,10 +23,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nasuakza.com.br.nasuakz.R;
-import nasuakza.com.br.nasuakz.beans.Marca;
-import nasuakza.com.br.nasuakz.classes.MarcaAdapter;
+import nasuakza.com.br.nasuakz.beans.Produto;
+import nasuakza.com.br.nasuakz.classes.ProdutoAdapter;
 
-public class AtvPrincipal extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class AtvProdutos extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -36,8 +36,8 @@ public class AtvPrincipal extends AppCompatActivity implements NavigationView.On
         // enable transitions
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.atv_principal);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setContentView(R.layout.atv_produtos);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarProduto);
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -69,33 +69,38 @@ public class AtvPrincipal extends AppCompatActivity implements NavigationView.On
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        List<Marca> marcas = new ArrayList<>();
-        Marca marca1 = new Marca();
-        marca1.setId(1);
-        marca1.setNome("Natura");
-        marca1.setLogo(R.drawable.natura_144x144);
-        marcas.add(marca1);
-        Marca marca2 = new Marca();
-        marca2.setId(2);
-        marca2.setNome("Jequiti");
-        marca2.setLogo(R.drawable.jequiti_144x144);
-        marcas.add(marca2);
-        Marca marca3 = new Marca();
-        marca3.setId(3);
-        marca3.setNome("Natura");
-        marca3.setLogo(R.drawable.natura_144x144);
-        marcas.add(marca3);
-        Marca marca4 = new Marca();
-        marca4.setId(4);
-        marca4.setNome("Jequiti");
-        marca4.setLogo(R.drawable.jequiti_144x144);
-        marcas.add(marca4);
-        mAdapter = new MarcaAdapter(marcas);
+        List<Produto> produtos = new ArrayList<>();
+        Produto produto1 = new Produto();
+        produto1.setId(1);
+        produto1.setNome("colar");
+        produto1.setPreco(10.99);
+        produto1.setImg(R.drawable.colar_144x144);
+        produtos.add(produto1);
+        Produto produto2 = new Produto();
+        produto2.setId(2);
+        produto2.setNome("tapeware");
+        produto2.setPreco(9.99);
+        produto2.setImg(R.drawable.tapeware_144x144);
+        produtos.add(produto2);
+        Produto produto3 = new Produto();
+        produto3.setId(3);
+        produto3.setNome("perfume");
+        produto3.setPreco(1.99);
+        produto3.setImg(R.drawable.perfume_144x144);
+        produtos.add(produto3);
+        Produto produto4 = new Produto();
+        produto4.setId(4);
+        produto4.setNome("dvd");
+        produto4.setPreco(199.99);
+        produto4.setImg(R.drawable.dvd_144x144);
+        produtos.add(produto4);
+        mAdapter = new ProdutoAdapter(produtos);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
 
-            final GestureDetector mGestureDetector = new GestureDetector(AtvPrincipal.this, new GestureDetector.SimpleOnGestureListener() {
-                @Override public boolean onSingleTapUp(MotionEvent e) {
+            final GestureDetector mGestureDetector = new GestureDetector(AtvProdutos.this, new GestureDetector.SimpleOnGestureListener() {
+                @Override
+                public boolean onSingleTapUp(MotionEvent e) {
                     return true;
                 }
 
@@ -104,9 +109,9 @@ public class AtvPrincipal extends AppCompatActivity implements NavigationView.On
             @Override
             public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
                 if (mGestureDetector.onTouchEvent(e)) {
-                    startActivity(new Intent(AtvPrincipal.this, AtvProdutos.class));
+                    startActivity(new Intent(AtvProdutos.this, AtvProduto.class));
                     return true;
-                }else
+                } else
                     return false;
             }
 
@@ -134,7 +139,7 @@ public class AtvPrincipal extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.atv_principal, menu);
+        getMenuInflater().inflate(R.menu.atv_produto, menu);
         return true;
     }
 
@@ -175,4 +180,5 @@ public class AtvPrincipal extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
