@@ -11,35 +11,37 @@ import android.widget.TextView;
 import java.util.List;
 
 import nasuakza.com.br.nasuakz.R;
-import nasuakza.com.br.nasuakz.beans.Marca;
+import nasuakza.com.br.nasuakz.beans.Produto;
 
 /**
  * Created by root on 16/12/15.
  */
 
-public class MarcaAdapter extends RecyclerView.Adapter<MarcaAdapter.MarcaViewHolder>{
-    private List<Marca> marcas;
+public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MarcaViewHolder>{
+    private List<Produto> produtos;
 
-    public MarcaAdapter(List<Marca> marcas) {
-        this.marcas = marcas;
+    public ProdutoAdapter(List<Produto> produtos) {
+        this.produtos = produtos;
     }
 
     @Override
     public MarcaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_marca, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_produto, parent, false);
         MarcaViewHolder mvh = new MarcaViewHolder(v);
         return mvh;
     }
 
     @Override
     public void onBindViewHolder(MarcaViewHolder holder, int position) {
-        //holder.nome.setText(this.marcas.get(position).getNome());
-        holder.logo.setImageResource(marcas.get(position).getLogo());
+        //holder.nome.setText(this.produtos.get(position).getNome());
+        holder.img.setImageResource(produtos.get(position).getImg());
+        holder.nome.setText(produtos.get(position).getNome());
+        holder.preco.setText(String.valueOf(produtos.get(position).getPreco()));
     }
 
     @Override
     public int getItemCount() {
-        return this.marcas.size();
+        return this.produtos.size();
     }
 
     @Override
@@ -47,16 +49,18 @@ public class MarcaAdapter extends RecyclerView.Adapter<MarcaAdapter.MarcaViewHol
         super.onAttachedToRecyclerView(recyclerView);
     }
 
-    public static class MarcaViewHolder extends RecyclerView.ViewHolder{
+    public static class MarcaViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
-        TextView marca;
-        ImageView logo;
+        TextView nome;
+        TextView preco;
+        ImageView img;
 
         MarcaViewHolder(View itemView) {
             super(itemView);
             cardView = (CardView) itemView.findViewById(R.id.cardviewProduto);
-            marca = (TextView) itemView.findViewById(R.id.marca);
-            logo = (ImageView) itemView.findViewById(R.id.logo);
+            nome = (TextView) itemView.findViewById(R.id.nome);
+            preco = (TextView) itemView.findViewById(R.id.preco);
+            img = (ImageView) itemView.findViewById(R.id.img);
         }
     }
 

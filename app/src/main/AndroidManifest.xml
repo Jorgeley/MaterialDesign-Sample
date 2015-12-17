@@ -63,10 +63,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activities.AtvPrincipal"
             android:label="@string/title_activity_atv_principal"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activities.AtvProduto"
+            android:label="@string/title_activity_atv_produto"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
     </application>
 
