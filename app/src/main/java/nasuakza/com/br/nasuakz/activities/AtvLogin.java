@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.transition.Explode;
 import android.util.Log;
 import android.view.View;
@@ -56,6 +58,10 @@ public class AtvLogin extends Activity{
         this.EdtSenha = (EditText) findViewById(R.id.password);
         this.PrgLogin = (ProgressBar) findViewById(R.id.PRGlogin);
         this.arquivo = new File(AtvLogin.this.getFilesDir() +"/"+ nomeArquivo);
+        final TextInputLayout textInputLayoutEmail = (TextInputLayout) findViewById(R.id.textInputLayoutEmail);
+        textInputLayoutEmail.setHint("usuário");
+        final TextInputLayout textInputLayoutSenha = (TextInputLayout) findViewById(R.id.textInputLayoutSenha);
+        textInputLayoutSenha.setHint("senha");
     }
 
    /* @Override
