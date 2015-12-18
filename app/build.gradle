@@ -4,7 +4,7 @@ android {
     compileSdkVersion 23
     buildToolsVersion "22.0.1"
     defaultConfig {
-        applicationId "nasuakza.com.br.nasuakz"
+        applicationId 'jorgeley.com.br.materialdesign_sample'
         minSdkVersion 21
         targetSdkVersion 23
         versionCode 1
@@ -42,5 +42,4 @@ dependencies {
     compile 'com.google.android.gms:play-services-identity:8.3.0'
     compile 'com.firebase:firebase-client-android:2.3.1'
     compile 'com.google.android.gms:play-services-gcm:8.3.0'
-
 }

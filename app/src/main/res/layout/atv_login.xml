@@ -30,20 +30,19 @@
     android:paddingTop="@dimen/activity_vertical_margin" tools:contexto=".AtvLogin"
     android:alpha="500">
 
-    <!-- Login progress -->
     <ImageView
         android:layout_width="144dp"
         android:layout_height="144dp"
         android:id="@+id/imageView"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/logo_144x144"
+        android:src="@android:drawable/sym_def_app_icon"
         android:scaleType="fitEnd"
         android:layout_marginTop="30dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/versao"
+        android:text="@string/nome_app"
         android:id="@+id/textView" />
 
     <ProgressBar android:id="@+id/PRGlogin" style="?android:attr/progressBarStyleLarge"
@@ -73,7 +72,6 @@
                 android:id="@+id/textInputLayoutSenha">
                 <EditText android:id="@+id/password" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:hint="@string/hint_senha"
-                    android:imeActionLabel="@string/texto_entrar_curto"
                     android:imeOptions="actionUnspecified" android:inputType="textPassword"
                     android:maxLines="1" android:singleLine="true"
                     android:elevation="5dp" />
@@ -81,7 +79,7 @@
 
             <Button android:id="@+id/email_sign_in_button" style="?android:textAppearanceSmall"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:layout_marginTop="16dp" android:text="@string/texto_entrar"
+                android:layout_marginTop="16dp" android:text="@string/btn_login"
                 android:textStyle="bold"
                 android:onClick="onClickLogin" />
 
@@ -91,10 +89,10 @@
 </LinearLayout>
 
 <android.support.design.widget.FloatingActionButton
-    android:id="@+id/fab"
+    android:id="@+id/info"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="end|bottom"
     android:layout_margin="16dp"
-    android:src="@android:drawable/ic_input_add" />
+    android:src="@drawable/info" />
 </android.support.design.widget.CoordinatorLayout>

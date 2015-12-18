@@ -1,4 +1,4 @@
-package nasuakza.com.br.nasuakz;
+package nasuakza.com.br.materialdesign_sample;
 
 import org.junit.Test;
 

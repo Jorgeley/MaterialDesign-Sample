@@ -30,7 +30,7 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:context="nasuakza.com.br.nasuakz.activities.AtvProduto">
+            tools:context="nasuakza.com.br.materialdesign_sample.activities.AtvProduto">
 
                 <TextView
                     android:layout_width="wrap_content"
